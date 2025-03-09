@@ -1,0 +1,40 @@
+name: git_and_gitlab
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  lottie: ^3.3.1
+  just_audio: ^0.9.46
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - lib/quiz_app/asset/png/
+    - lib/quiz_app/asset/icons/
+    - lib/quiz_app/asset/animation/
+    - lib/quiz_app/asset/sound/ringtone.wav
+    - lib/quiz_app/asset/sound/wrong.wav
+    - lib/quiz_app/asset/sound/wrong2.wav
+    - lib/quiz_app/asset/sound/correct.wav
+    - lib/quiz_app/asset/animation/easy_level.json
+    - lib/quiz_app/asset/animation/failed.json
+
