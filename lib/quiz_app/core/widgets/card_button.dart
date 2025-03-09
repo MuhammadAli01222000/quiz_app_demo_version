@@ -7,13 +7,13 @@ import '../theme/strings.dart';
 
 class CardQuestion extends StatefulWidget {
   final int count;
-  bool onPressed;
+  final bool onPressed;
   final int level;
   final int son1;
   final int son2;
   final int result;
   final VoidCallback onTimeUp;
-  CardQuestion({
+  const CardQuestion({
     super.key,
     required this.son1,
     required this.onPressed,
@@ -35,16 +35,13 @@ class _CardQuestionState extends State<CardQuestion> {
     return Align(
       alignment: Alignment(0, -1),
       child: SizedBox(
-        width: 380,
+        width: double.infinity,
         height: AppDimens.d221,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             /// katta carta
             Positioned(
-              top: 20,
-              left: 0,
-              right: 0,
               child: Card(
                 color: AppColors.mainAndBottomSheetColor,
                 elevation: 5,
@@ -54,20 +51,18 @@ class _CardQuestionState extends State<CardQuestion> {
                 child: SizedBox(
                   width: MediaQuery.sizeOf(context).width - 10,
                   height: 180,
+                  child: Center(
+                    child: Container(
+                      width: 65,
+                      height: 65,
+                      color: AppColors.transparent,
+                      // child: Align(
+                      //   alignment: Alignment.topLeft,
+                      //   child: TimerWidget(isPressed: widget.onPressed),
+                      // ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-
-            ///circlre
-            Positioned(
-              top: -1,
-              left: 0,
-              right: 0,
-              child: Container(
-                width: 65,
-                height: 65,
-                color: AppColors.white,
-                child: Center(child: TimerWidget(isPressed: widget.onPressed)),
               ),
             ),
 
@@ -169,7 +164,7 @@ class _TimerWidgetState extends State<TimerWidget> {
   void check(int timeLeft) {
     if (timeLeft == 0) {
       setState(() {
-       // Navigator.pushNamed(context, AppRoutes.second, arguments: 1);
+        // Navigator.pushNamed(context, AppRoutes.second, arguments: 1);
       });
     }
   }
@@ -205,7 +200,11 @@ class _TimerWidgetState extends State<TimerWidget> {
           ),
           Text(
             "$timeLeft",
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.white,
+            ),
           ),
         ],
       ),
@@ -222,7 +221,6 @@ class CircleNested extends StatelessWidget {
     int correct = listScore[1];
     int sum = 10 * correct;
 
-    ///matija
     return Align(
       alignment: Alignment(0, -1),
       child: ClipRRect(
@@ -233,49 +231,45 @@ class CircleNested extends StatelessWidget {
           child: ColoredBox(
             color: AppColors.mainAndBottomSheetColor,
             child: Center(
-              child: Stack(
-                children: [
-                  SizedBox(
-                    width: 150,
-                    height: 150,
-                    child: Card(
-                      shape: CircleBorder(),
-                      color: Colors.purple.shade300,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: 105,
-                          height: 105,
-                          child: Card(
-                            shape: CircleBorder(),
-                            color: Colors.purple.shade200,
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.5),
-                              child: Padding(
-                                padding: const EdgeInsets.all(5.4),
+              child: SizedBox(
+                width: 150,
+                height: 150,
+                child: Card(
+                  shape: CircleBorder(),
+                  color: Colors.purple.shade300,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 105,
+                      height: 105,
+                      child: Card(
+                        shape: CircleBorder(),
+                        color: Colors.purple.shade200,
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.5),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.4),
+                            child: SizedBox(
+                              width: 80,
+                              height: 80,
+                              child: Card(
+                                shape: CircleBorder(),
+                                color: Colors.purple.shade100,
                                 child: SizedBox(
-                                  width: 80,
-                                  height: 80,
+                                  width: 60,
+                                  height: 60,
                                   child: Card(
                                     shape: CircleBorder(),
                                     color: Colors.purple.shade100,
-                                    child: SizedBox(
-                                      width: 60,
-                                      height: 60,
-                                      child: Card(
-                                        shape: CircleBorder(),
-                                        color: Colors.purple.shade100,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(0.0),
-                                          child: SizedBox(
-                                            width: 40,
-                                            height: 40,
-                                            child: Card(
-                                              shape: CircleBorder(),
-                                              color: AppColors.white,
-                                              child: OverallResults(sum: sum),
-                                            ),
-                                          ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0.0),
+                                      child: SizedBox(
+                                        width: 40,
+                                        height: 40,
+                                        child: Card(
+                                          shape: CircleBorder(),
+                                          color: AppColors.white,
+                                          child: OverallResults(sum: sum),
                                         ),
                                       ),
                                     ),
@@ -288,8 +282,7 @@ class CircleNested extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                ],
+                ),
               ),
             ),
           ),

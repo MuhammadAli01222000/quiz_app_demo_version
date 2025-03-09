@@ -28,13 +28,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/quiz_app/asset/png/
-    - lib/quiz_app/asset/icons/
-    - lib/quiz_app/asset/animation/
-    - lib/quiz_app/asset/sound/ringtone.wav
-    - lib/quiz_app/asset/sound/wrong.wav
-    - lib/quiz_app/asset/sound/wrong2.wav
-    - lib/quiz_app/asset/sound/correct.wav
-    - lib/quiz_app/asset/animation/easy_level.json
-    - lib/quiz_app/asset/animation/failed.json
+    - asset/
+    - asset/animation/
+    - asset/icons/
+    - asset/png/
+    - asset/sound/correct.wav
+    - asset/sound/input.wav
+    - asset/sound/ringtone.wav
+    - asset/sound/wrong2.wav
+
+
+
 

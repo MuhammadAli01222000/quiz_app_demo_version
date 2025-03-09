@@ -7,7 +7,7 @@ import 'package:git_and_gitlab/quiz_app/core/theme/text_style.dart';
 
 import '../core/widgets/app_button.dart';
 
-const backroundImagePath = "lib/quiz_app/asset/png/img_1.png";
+const backgroundImagePath = "asset/png/img_1.png";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,26 +17,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: backroundImage(),
+        decoration: backgroundImage(),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppDimens.d60,
-            vertical: AppDimens.d22,
-          ),
+          padding: EdgeInsets.symmetric(vertical: AppDimens.d22),
           child: Column(
             children: [
               Text(AppTexts.quizzly, style: AppTextStyle.quizly),
               const SizedBox(height: 20),
 
               /// card info
-              Align(
+              const Align(
                 alignment: Alignment(0, -0.2),
                 child: Card(
                   color: AppColors.white,
@@ -67,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 45),
-              Text(
+              const Text(
                 AppTexts.choose,
                 style: TextStyle(
                   color: AppColors.white,
@@ -84,7 +80,11 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.white,
                   textColor: AppColors.white,
                   function: () {
-                    Navigator.pushNamed(context, AppRoutes.second, arguments: 1);
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.second,
+                      arguments: 1,
+                    );
                   },
                 ),
               ),
@@ -97,7 +97,11 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.white,
                   textColor: AppColors.white,
                   function: () {
-                    Navigator.pushNamed(context, AppRoutes.second, arguments: 2);
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.second,
+                      arguments: 2,
+                    );
                   },
                 ),
               ),
@@ -110,7 +114,11 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.white,
                   textColor: AppColors.white,
                   function: () {
-                    Navigator.pushNamed(context, AppRoutes.second, arguments: 3);
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.second,
+                      arguments: 3,
+                    );
                   },
                 ),
               ),
@@ -123,11 +131,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BoxDecoration backroundImage() {
+  BoxDecoration backgroundImage() {
     return BoxDecoration(
       image: DecorationImage(
-        image: AssetImage(backroundImagePath),
-        fit: BoxFit.contain,
+        image: AssetImage(backgroundImagePath),
+        fit: BoxFit.fill,
         colorFilter: ColorFilter.mode(
           AppColors.mainAndBottomSheetColor,
           BlendMode.lighten,

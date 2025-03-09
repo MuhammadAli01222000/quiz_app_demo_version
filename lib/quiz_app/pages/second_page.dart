@@ -53,35 +53,41 @@ class _SecondPageState extends State<SecondPage> {
     try {
       await _audioPlayer.setFilePath(filePath);
       await _audioPlayer.play();
-    } catch (e) {
-      debugPrint("Error loading audio: $e");
+    } catch (e, s) {
+      debugPrint("Error loading audio:  $e,$s");
     }
   }
 
   Future<void> _playSoundWrong() async {
     try {
-      await _audioPlayer.setFilePath("lib/quiz_app/asset/sound/wrong2.wav");
+      await _audioPlayer.setFilePath("asset/sound/wrong2.wav");
+      print("64 lines asset/sound/ringtone.wav");
+
       await _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio: $e");
+      debugPrint("Error loading audio: wrong2 $e");
     }
   }
 
   void checkAnswer(String selectedAnswer) async {
     int res = int.parse(selectedAnswer);
 
-    debugPrint("count: $count, correct answer: ${listResult[count]}, selected: $res");
+    debugPrint(
+      "count: $count, correct answer: ${listResult[count]}, selected: $res",
+    );
 
     if (res == listResult[count]) {
       correct++;
-       _playSound("lib/quiz_app/asset/sound/correct.wav");
+      _playSound("asset/sound/correct.wav");
+      print("80 lines asset/sound/ringtone.wav");
     } else {
       wrong++;
       _playSoundWrong();
     }
 
     if (count == 9) {
-       _playSound("lib/quiz_app/asset/sound/ringtone.wav");
+      _playSound("asset/sound/ringtone.wav");
+      print("88lines asset/sound/ringtone.wav");
       Navigator.pushNamed(
         context,
         AppRoutes.third,
@@ -94,7 +100,6 @@ class _SecondPageState extends State<SecondPage> {
     }
   }
 
-
   void onTimeUp() async {
     setState(() {
       ///times
@@ -102,7 +107,9 @@ class _SecondPageState extends State<SecondPage> {
     });
 
     if (count == 10) {
-      await _playSound("lib/quiz_app/asset/sound/game_over.wav");
+      await _playSound("asset/sound/input.wav");
+      print("11 lines asset/sound/ringtone.wav");
+
       Navigator.pushNamed(
         context,
         AppRoutes.third,
@@ -137,10 +144,11 @@ class _SecondPageState extends State<SecondPage> {
       appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.only(left: 3, right: 3),
                 child: Column(
                   children: [
                     CardQuestion(
@@ -159,13 +167,14 @@ class _SecondPageState extends State<SecondPage> {
             const SizedBox(height: 50),
 
             for (var answer in answers) answersButton(answer),
-
-            const SizedBox(height: 10),
+            const SizedBox(height: 120),
+            SizedBox.shrink(),
             SizedBox(
-              width: 310,
-              height: 37,
+              width: 300,
+              height: 47,
               child: ButtonFooter(listScore: [wrong, correct]),
             ),
+
           ],
         ),
       ),
@@ -179,14 +188,14 @@ class _SecondPageState extends State<SecondPage> {
         onPressed: () {
           myDialog(context);
         },
-        icon: const Icon(Icons.arrow_back,color: AppColors.white,),
+        icon: const Icon(Icons.arrow_back, color: AppColors.white),
       ),
     );
   }
 
   /// Javob tugmalari
   Padding answersButton(int answer) {
-  //  answer=-1;
+    //  answer=-1;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: SizedBox(
@@ -197,7 +206,7 @@ class _SecondPageState extends State<SecondPage> {
           color: AppColors.mainAndBottomSheetColor,
           textColor: AppColors.black,
           function: () {
-            checkAnswer((answer.toString()) );
+            checkAnswer((answer.toString()));
           },
         ),
       ),

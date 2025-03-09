@@ -5,13 +5,12 @@ import 'package:git_and_gitlab/quiz_app/core/theme/strings.dart';
 import 'package:git_and_gitlab/quiz_app/core/widgets/app_button.dart';
 import 'package:git_and_gitlab/quiz_app/services/quiz_controller.dart';
 import 'package:lottie/lottie.dart';
-import '../asset/icons/app_icons.dart';
 import '../core/theme/colors.dart';
 import '../core/widgets/card_button.dart';
 
-const imgPath = "lib/quiz_app/asset/animation/anim - 1741330512672.json";
-const animPathFailed = "lib/quiz_app/asset/animation/failed.json";
-const animPathEasy = "lib/quiz_app/asset/animation/easy_level.json";
+const imgPath = "asset/animation/anim - 1741330512672.json";
+const animPathFailed = "asset/animation/failed.json";
+const animPathEasy = "asset/animation/easy_level.json";
 
 class ThirdPage extends StatefulWidget {
   final List<int> list;
@@ -127,9 +126,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                 children: [
                                   GreenCircle(),
                                   CounterCorrect(correct: correct),
-                                  SizedBox(width: 150),
+                                  SizedBox(width: 110),
                                   RedCircle(),
-                                  CounterWrong(wrong: wrong),
+                                  Expanded(child: CounterWrong(wrong: wrong)),
                                 ],
                               ),
                             ),
@@ -175,18 +174,18 @@ class _ThirdPageState extends State<ThirdPage> {
                     onPressed: () {
                       setState(() {});
                     },
-                    child: Text(
-                      AppTexts.quizzly,
-                      style: TextStyle(color: AppColors.white),
-                    ),
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
                         AppColors.mainAndBottomSheetColor,
                       ),
                     ),
+                    child: Text(
+                      AppTexts.quizzly,
+                      style: TextStyle(color: AppColors.white),
+                    ),
                   ),
                 ),
-                SizedBox(height: 15),
+             const    SizedBox(height: 15),
               ],
             ),
           ),
@@ -199,7 +198,6 @@ class _ThirdPageState extends State<ThirdPage> {
     return AppBar(
       leading: arrowBackButton(context),
       flexibleSpace: Container(
-        child: Center(child: CircleNested(listScore: [wrong, correct])),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(AppDimens.d16),
@@ -207,6 +205,7 @@ class _ThirdPageState extends State<ThirdPage> {
           ),
           color: AppColors.mainAndBottomSheetColor,
         ),
+        child: Center(child: CircleNested(listScore: [wrong, correct])),
       ),
     );
   }
@@ -235,7 +234,7 @@ class CounterWrong extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "${wrong} Wrong ",
+      " ${wrong} Wrong ",
       style: TextStyle(color: AppColors.red, fontWeight: FontWeight.bold),
     );
   }

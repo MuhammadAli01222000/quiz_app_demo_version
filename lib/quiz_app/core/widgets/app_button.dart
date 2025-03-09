@@ -54,7 +54,7 @@ class _ButtonFooterState extends State<ButtonFooter> {
 
   Future<void> _initAudio() async {
     try {
-      const soundPath = "lib/quiz_app/asset/sound/ringtone.wav";
+      const soundPath = "asset/sound/ringtone.wav";
 
       await _audioPlayer.setFilePath(soundPath);
     } catch (e) {
@@ -80,7 +80,7 @@ class _ButtonFooterState extends State<ButtonFooter> {
           MaterialPageRoute<void>(builder: (BuildContext context) =>  ThirdPage(list: [wrong,correct],)),
           ModalRoute. withName('/'),
         );      },
-      child: Text(AppTexts.score, style: TextStyle(color: AppColors.white)),
+      child: Text(AppTexts.score, style: TextStyle(color: AppColors.white,fontWeight: FontWeight.bold)),
     );
   }
 }
